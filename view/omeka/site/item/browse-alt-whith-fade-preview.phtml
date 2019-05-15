@@ -1,0 +1,145 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$this->htmlElement('body')->appendAttribute('class', 'item resource browse');
+$query = $this->params()->fromQuery();
+$itemSetShow = isset($itemSet);
+if ($itemSetShow):
+    $this->htmlElement('body')->appendAttribute('class', 'item-set');
+    $query['item_set_id'] = $itemSet->id();
+endif;
+$headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title');
+$bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description');
+$sortHeadings = [
+    [
+        'label' => $translate('Title'),
+        'value' => 'dcterms:title',
+    ],
+    [
+        'label' => $translate('Identifier'),
+        'value' => 'dcterms:identifier',
+    ],
+    [
+        'label' => $translate('Class'),
+        'value' => 'resource_class_label',
+    ],
+    [
+        'label' => $translate('Created'),
+        'value' => 'created',
+    ],
+];
+?>
+<?php if ($itemSetShow): ?>
+
+    <?php// echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
+    <h3><?php echo $translate('Item set'); ?></h3>
+    <div class="metadata">
+        <?php echo $itemSet->displayValues(); ?>
+    </div>
+    <div class="item-set-items">
+     <?php //cc echo '<h3>' . $escape($translate('Items')) . '</h3>'; ?>
+<?php else: ?>
+   <?php //echo $this->pageTitle($translate('Items'), 2); ?>
+<?php endif;?>
+
+
+<h1>Discover</h2>
+ 
+<div class="d-flex justify-content-between m-5">
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="btn btn-info btn m-1" role="button" href="/s/octoroon/item">All Items
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-info btn  m-1" href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=8&property%5B0%5D%5Btype%5D=eq&property%5B0%5D%5Btext%5D=Performances&resource_class_id%5B%5D=&item_set_id%5B%5D=&submit=Search">Performances
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-info btn m-1 " href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=&property%5B0%5D%5Btype%5D=eq&property%5B0%5D%5Btext%5D=&resource_class_id%5B%5D=1&item_set_id%5B%5D=&submit=Search">People
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-info btn  m-1 " href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=8&property%5B0%5D%5Btype%5D=eq&property%5B0%5D%5Btext%5D=Places&resource_class_id%5B%5D=&item_set_id%5B%5D=&submit=Search">Places
+ </a>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-info btn  m-1"   href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=8&property%5B0%5D%5Btype%5D=eq&property%5B0%5D%5Btext%5D=Historic+Event&resource_class_id%5B%5D=&item_set_id%5B%5D=&submit=Search">Historic Events</a>
+  </li>
+    <li class="nav-item">
+    <a class="btn btn-info btn m-1 " href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=8&property%5B0%5D%5Btype%5D=in&property%5B0%5D%5Btext%5D=Article&property%5B1%5D%5Bjoiner%5D=or&property%5B1%5D%5Bproperty%5D=8&property%5B1%5D%5Btype%5D=in&property%5B1%5D%5Btext%5D=Prompt+Book&property%5B2%5D%5Bjoiner%5D=or&property%5B2%5D%5Bproperty%5D=8&property%5B2%5D%5Btype%5D=in&property%5B2%5D%5Btext%5D=Playbill&resource_class_id%5B%5D=&item_set_id%5B%5D=&submit=Search">Media</a>
+  </li>
+</ul>
+    <div class="row">
+        <div class="container">
+
+      <?php echo $this->partial('common/search-form'); ?>
+    </div>
+</div>
+      <?php  echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'btn btn-light m-1']); ?>
+    
+
+ </div>
+ <?php   echo $this->searchFilters(); ?>
+<div class="browse-controls">
+    <?php echo $this->pagination(); ?>
+     <?php echo $this->sortSelector($sortHeadings); ?>
+</div>
+<?php $this->trigger('view.browse.before');?>
+ <!-- **ccadena <ul class="resource-list"> -->
+<div class="row">
+
+
+ <?php
+foreach ($items as $item):
+    $heading = $item->value($headingTerm, ['default' => $translate('[Untitled]')]);
+    $body = $item->value($bodyTerm);
+    ?>
+	   <!-- **ccadena <li class="item resource"> -->
+     
+       <ul class="card-group col-lg-4 resource-list preview">
+   
+     
+        <li class="card mb-4 shadow-sm in-call-out item resource">
+                
+                <div class="card-header " data-size="small">
+	                   <h2 class="m-4"> <?php echo $item->link($heading); ?></h2>
+	              </div>
+                
+                <div class=" ">
+	                  
+                    <div class=" mr-3 description">
+                       <div class=" float-left mr-3">
+	                       <?php echo $item->linkRaw($this->thumbnail($item, 'medium')); ?>
+	                  </div>
+                          <?php if ($body): ?>
+                            
+                                <?php
+                                // $truncated = substr($body, 0, strpos($body, ' ', 50));
+                                  echo $body;
+                                  ?>
+
+              
+                              <?php endif;?>
+                      </div>
+      <span class="float-right m-l-5">
+                    <?php
+                         echo $item->link('...Learn More');
+                  ?>
+                   </span>
+  
+                  </div><!--end  card- body -->
+
+             
+            </li>
+            <!--end ccard -->
+      
+            </ul>
+            <?php endforeach;?>
+      
+
+      
+    </div><!--end row-->
+<?php echo ($itemSetShow) ? '</div>' : ''; ?>
+<?php $this->trigger('view.browse.after');?>
+<?php echo $this->pagination(); ?>

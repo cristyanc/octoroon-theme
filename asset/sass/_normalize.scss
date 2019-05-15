@@ -1,0 +1,79 @@
+// Consistent settings
+
+// By Actual pixel Width
+$px7680: "#{all} and (min-width: 7680px)";
+$px7520: "#{all} and (max-width: 7679px)";
+$px7360: "#{all} and (max-width: 7519px)";
+$px7200: "#{all} and (max-width: 7359px)";
+$px7040: "#{all} and (max-width: 7199px)";
+$px6880: "#{all} and (max-width: 7039px)";
+$px6720: "#{all} and (max-width: 6879px)";
+$px6560: "#{all} and (max-width: 6719px)";
+$px6400: "#{all} and (max-width: 6559px)";
+$px6240: "#{all} and (max-width: 6999px)";
+$px6080: "#{all} and (max-width: 6239px)";
+$px5920: "#{all} and (max-width: 6079px)";
+$px5760: "#{all} and (max-width: 5919px)";
+$px5600: "#{all} and (max-width: 5759px)";
+$px5440: "#{all} and (max-width: 5599px)";
+$px5280: "#{all} and (max-width: 5439px)";
+$px5120: "#{all} and (max-width: 5279px)";
+$px4960: "#{all} and (max-width: 5119px)";
+$px4800: "#{all} and (max-width: 4959px)";
+$px4640: "#{all} and (max-width: 4799px)";
+$px4480: "#{all} and (max-width: 4639px)";
+$px4320: "#{all} and (max-width: 4479px)";
+$px4160: "#{all} and (max-width: 4319px)";
+$px4000: "#{all} and (max-width: 4159px)";
+$px3840: "#{all} and (max-width: 3999px)";
+$px3680: "#{all} and (max-width: 3839px)";
+$px3520: "#{all} and (max-width: 3679px)";
+$px3360: "#{all} and (max-width: 3519px)";
+$px3200: "#{all} and (max-width: 3359px)";
+$px3040: "#{all} and (max-width: 3199px)";
+$px2880: "#{all} and (max-width: 3039px)";
+$px2720: "#{all} and (max-width: 2879px)";
+$px2560: "#{all} and (max-width: 2719px)";
+$px2400: "#{all} and (max-width: 2559px)";
+$px2240: "#{all} and (max-width: 2399px)";
+$px2080: "#{all} and (max-width: 2239px)";
+$px1920: "#{all} and (max-width: 2079px)";
+$px1760: "#{all} and (max-width: 1919px)";
+$px1600: "#{all} and (max-width: 1759px)";
+$px1440: "#{all} and (max-width: 1599px)";
+$px1280: "#{all} and (max-width: 1439px)";
+$px1160: "#{all} and (max-width: 1279px)";
+$px1024: "#{all} and (max-width: 1159px)";
+$px768: "#{all} and (max-width: 1023px)";
+$px896: "#{all} and (max-width: 895px)"; // Use sparingly
+$px640: "#{all} and (max-width: 767px)";
+$px568: "#{all} and (max-width: 639px)";
+$px480: "#{all} and (max-width: 567px)";
+$px414: "#{all} and (max-width: 479px)"; // default portrait view
+$px375: "#{all} and (max-width: 413px)"; // iphone X specific
+$px320: "#{all} and (max-width: 374px)";
+
+$screen: "only screen" !default;
+$landscape: "#{all} and (orientation: landscape)";
+$portrait: "#{all} and (orientation: portrait)";
+
+$dpi2: "only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1),only screen and (min-device-pixel-ratio: 2),only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)";
+
+$SamsungS3L: "#{$screen} and (max-device-width: 1280px) and (orientation:landscape)";
+$SamsungS3P: "#{$screen} and (device-width: 720px) and (device-height: 1280px) and (orientation: portrait)";
+
+$iPad12Mini: "#{$screen} and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)";
+
+$webkit: "#{$screen} and (-webkit-min-device-pixel-ratio:0)";
+
+$firefox: "url-prefix()";
+
+// Touch can be scoped like this inside of a mediaquery
+// .touch & {display: none;}
+// .touch & {display: none;}}
+
+/*
+Samsung Should be Scoped within .touch
+    @media #{$SamsungS3L} { .touch & {display: none;}}
+    @media #{$SamsungS3P} { .touch & {display: none;}}
+*/

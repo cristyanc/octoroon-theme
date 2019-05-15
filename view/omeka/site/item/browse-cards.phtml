@@ -1,0 +1,218 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$this->htmlElement('body')->appendAttribute('class', 'item resource browse');
+$query = $this->params()->fromQuery();
+$itemSetShow = isset($itemSet);
+if ($itemSetShow):
+    $this->htmlElement('body')->appendAttribute('class', 'item-set');
+    $query['item_set_id'] = $itemSet->id();
+endif;
+$headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title');
+$bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description');
+$sortHeadings = [
+    [
+        'label' => $translate('Title'),
+        'value' => 'dcterms:title',
+    ],
+    [
+        'label' => $translate('Identifier'),
+        'value' => 'dcterms:identifier',
+    ],
+    [
+        'label' => $translate('Class'),
+        'value' => 'resource_class_label',
+    ],
+    [
+        'label' => $translate('Created'),
+        'value' => 'created',
+    ],
+];
+?>
+
+<?php if ($itemSetShow): ?>
+    <?php// echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
+    <h3><?php echo $translate('Item set'); ?></h3>
+    <div class="metadata">
+        <?php echo $itemSet->displayValues(); ?>
+    </div>
+    <div class="item-set-items">
+     <?php //cc echo '<h3>' . $escape($translate('Items')) . '</h3>'; ?>
+<?php else: ?>
+   <?php //echo $this->pageTitle($translate('Items'), 2); ?>
+<?php endif;?>
+<?php echo $this->searchFilters(); ?>
+<div class="d-flex justify-content-between alert alert-success">
+
+<ul class="nav nav-pills">
+
+  <li class="nav-item">
+    <a class="nav-link " href="/s/octoroon/item">All Items
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=8&property%5B0%5D%5Btype%5D=eq&property%5B0%5D%5Btext%5D=performance&resource_class_id%5B%5D=&item_set_id%5B%5D=&submit=Search">Performances
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=&property%5B0%5D%5Btype%5D=eq&property%5B0%5D%5Btext%5D=&resource_class_id%5B%5D=1&item_set_id%5B%5D=&submit=Search">People
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=&property%5B0%5D%5Btype%5D=eq&property%5B0%5D%5Btext%5D=&resource_class_id%5B%5D=9&item_set_id%5B%5D=&submit=Search">Places
+ </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=8&property%5B0%5D%5Btype%5D=eq&property%5B0%5D%5Btext%5D=Historic+Event&resource_class_id%5B%5D=&item_set_id%5B%5D=&submit=Search">Historic Events</a>
+  </li>
+
+    <li class="nav-item">
+    <a class="nav-link " href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=8&property%5B0%5D%5Btype%5D=in&property%5B0%5D%5Btext%5D=Article&property%5B1%5D%5Bjoiner%5D=or&property%5B1%5D%5Bproperty%5D=8&property%5B1%5D%5Btype%5D=in&property%5B1%5D%5Btext%5D=Prompt+Book&property%5B2%5D%5Bjoiner%5D=or&property%5B2%5D%5Bproperty%5D=8&property%5B2%5D%5Btype%5D=in&property%5B2%5D%5Btext%5D=Playbill&resource_class_id%5B%5D=&item_set_id%5B%5D=&submit=Search">Media</a>
+  </li>
+</ul>
+      <div>
+      <?php echo $this->partial('common/search-form'); ?>
+      </div>
+
+      
+      
+      <?php // echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'btn btn-warning']); ?>
+     
+ </div>
+<div class="browse-controls">
+
+    <?php echo $this->pagination(); ?>
+     <?php echo $this->sortSelector($sortHeadings); ?>
+</div>
+<?php $this->trigger('view.browse.before');?>
+ <!-- **ccadena <ul class="resource-list"> -->
+<div class="row">
+
+<!-- Version 2.0.0 -->
+
+<!--start in-call-out with image-->
+<div class="in-call-out" data-info="in-call-out" data-size="small" data-category="" tabindex="0">    
+    <div class="content">
+        
+        <figure>
+            <i class="svginline" data-src="/_resources/images/call-out/cardiovascular.svg"></i>
+        </figure><!--end figure -->        
+        
+        <div class="content-area">
+                
+            <div>
+                <h2 tabindex="0">Small CTA</h2>
+                <p tabindex="0">
+                    Copy TBD. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                </p>
+
+                <a href="#" class="cta" title="">
+                    <p>Learn More</p>
+                    <?php include($_SERVER['DOCUMENT_ROOT'] . '/_resources/images/vectors/svg/arrow-right.php'); ?>
+                </a>
+            </div><!--end div -->
+
+        </div><!--end content-area -->
+
+    </div><!-- end content -->
+    
+</div><!-- end in-call-out with image -->
+
+
+
+
+
+
+<!--start in-call-out with image-->
+<div class="in-call-out" data-info="in-call-out" data-size="medium" data-category="" tabindex="0">
+    <div class="content">
+        
+        <figure>
+            <i class="svginline" data-src="/_resources/images/call-out/papers.svg"></i>
+        </figure><!--end figure -->
+        
+        <div class="content-area">
+            <div>
+                <h2 tabindex="0">Medium CTA</h2>
+                 <p tabindex="0">
+                     Copy TBD. Lorem ipsum dolor sit amet, consectetur adipiscing elit, . Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                </p>
+
+                <a href="#" class="cta" title="">
+                    <p>Learn More</p>
+                    <?php include($_SERVER['DOCUMENT_ROOT'] . '/_resources/images/vectors/svg/arrow-right.php'); ?>
+                </a>
+            </div><!--end div -->
+        </div><!--end content-area -->
+    </div><!-- end content -->
+</div><!-- end in-call-out with image -->
+
+
+
+
+
+
+<!--start in-call-out with image-->
+<div class="in-call-out" data-info="in-call-out" data-size="large" data-category="" tabindex="0">    
+    <div class="content">
+        
+        <figure>
+            <img data-load="lazy" data-original="/_resources/images/call-out/person-looking-at-computer.jpg" src="<?php include($_SERVER['DOCUMENT_ROOT'] . '/_resources/images/call-out/large-cta-image-place-holder.php'); ?>" alt="" />
+        </figure><!--end figure -->    
+
+        <div class="content-area">
+            <div>
+                <h2 tabindex="0">Large CTA </h2>
+                <p tabindex="0">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </p>
+
+                <a href="#" class="cta" title="">
+                    <p>Learn More</p>
+                    <?php include($_SERVER['DOCUMENT_ROOT'] . '/_resources/images/vectors/svg/arrow-right.php'); ?>
+                </a>
+            </div><!--end div -->
+        </div><!--end content-area -->
+
+    </div><!-- end content -->
+
+</div><!-- end in-call-out with image -->
+ <?php
+foreach ($items as $item):
+    $heading = $item->value($headingTerm, ['default' => $translate('[Untitled]')]);
+    $body = $item->value($bodyTerm);
+    ?>
+	   <!-- **ccadena <li class="item resource"> -->
+	   <div class="card-group col-lg-4">
+	   <div class="card mb-4 shadow-sm">
+	   <div class="card-header">
+	   <h4><?php echo $item->link($heading); ?></h4>
+	  </div>
+
+	   <div class="card-body">
+
+	            <div class=" float-left mr-3">
+	                <?php echo $item->linkRaw($this->thumbnail($item, 'medium')); ?>
+	            </div>
+	        <?php if ($body): ?>
+	        <div class="description">
+	            <?php
+    $truncated = substr($body, 0, strpos($body, ' ', 255));
+    echo $truncated;
+    echo $item->link(' ...');
+    ?>
+	        </div>
+	        <?php endif;?>
+        <br>
+        <div class="d-flex justify-content-between align-items-center">
+<div class="btn-group"><button class="btn btn-sm btn-outline-secondary" type="button"> <?php echo $item->link('View Item'); // Print a link to $item ?></button><button class="btn btn-sm btn-outline-secondary" type="button"> <a href="<?php echo $item->adminUrl('edit', 'edit'); // Print a link to the edit form for $item ?>" target="_blank">Edit</a> </button></div>
+ </div>
+</div><!--end body -->
+    </div><!--end card -->
+  </div><!--end col-md-4 -->
+  <?php endforeach;?>
+</div>
+</div>
+<?php echo ($itemSetShow) ? '</div>' : ''; ?>
+<?php $this->trigger('view.browse.after');?>
+<?php echo $this->pagination(); ?>

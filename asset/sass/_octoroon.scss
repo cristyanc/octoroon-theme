@@ -1,0 +1,153 @@
+/*
+* Omeka Custom Variables/ 
+*  
+**/
+
+.bg {
+  /* The image used */
+  background-image: url("../img/octoroon-illustration.png");
+
+  /* Full height */
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+html,
+body {
+  background-color: #e9e5dc;
+
+  font: 18px/24px; //"Crimson Text", serif!important;
+  /* Full height */
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ 
+h1 {
+  font: "Crimson Text", serif !important;
+}
+
+header {
+  background-color: transparent;
+  border-bottom: none;
+}
+
+a.resource-link, .tags > div > a {
+
+text-decoration: underline!important;
+color:$warning;
+
+}
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+#all-content.site-wrapper {
+  display: table;
+  width: 100%;
+  // height: 100vh; /* For at least Firefox */
+  min-height: 100%;
+  box-shadow: inset 0 0 5rem rgb(170, 160, 140);
+
+  .site-wrapper-inner {
+    display: table-cell;
+    vertical-align: top !important;
+  }
+}
+
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100vh; /* For at least Firefox */
+  min-height: 100%;
+  box-shadow: inset 0 0 5rem rgb(170, 160, 140);
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 2rem;
+}
+
+
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+}
+
+/*
+ * Footer
+ */
+
+.mastfoot {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/*
+ * Affix and center
+ */
+
+@media (min-width: 40em) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+.navbar-nav,
+.navigation {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.no-padding {
+}
+#all-content {
+  .container-fluid {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  header {
+    // background-color: #f0ede6;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}

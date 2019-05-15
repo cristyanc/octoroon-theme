@@ -1,0 +1,39 @@
+{
+  "name": "octoroon",
+  "version": "1.0.0",
+  "description": "Octroon theme: default+boostrap 4",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+     "url": "git@github.com:cristyanc/octoroon-theme.git"
+  },
+  "keywords": [
+    "omeka-s",
+    "theme"
+  ],
+  "author": "cristyanc",
+  "license": "GPL-3.0",
+  "bugs": {
+   "url": "https://github.com/"
+  },
+  "homepage": "https://github.com/ ",
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "susy": "^2.2.12"
+  },
+  "browserslist": [
+    "> 5%",
+    "> 1% in US"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  }
+}

@@ -1,0 +1,132 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+//$this->htmlElement('body')->appendAttribute('class', 'item resource show');
+$this->htmlElement('body')->appendAttribute('class', 'item resource show');
+$embedMedia = $this->siteSetting('item_media_embed', false);
+$itemMedia = $item->media();
+?>
+<div class="card-header " data-size="small">
+  <?php echo $this->pageTitle($item->displayTitle(), 1); ?>
+</div>
+<!--start in-call-out with image-->
+
+<div class="content-layout">
+	<div class="container-1">
+		<div class="in-call-out" data-info="in-call-out" data-size="large" data-category="" tabindex="0">   
+			
+			<div class="content">
+			
+		
+			<?php if (!$embedMedia && $itemMedia): ?>
+			
+				<!--display all images -->
+				<div class="media-list">
+					
+					<div class="property">
+						<?php foreach ($itemMedia as $media): ?>
+						
+						<figure>
+							<?php echo $media->render(); ?>
+						</figure>
+
+						<?php
+							endforeach; ?>
+					</div>
+
+				</div><!--end display all images-->
+
+			<?php
+			endif; ?>
+
+			<?php if ($embedMedia && $itemMedia): ?>
+			
+				<!--display embeds -->
+				<div class="media-embeds">
+			
+						<?php foreach ($itemMedia as $media): ?>
+							<figure>
+									<?php echo $media->render(); ?>
+							</figure>
+						<?php 
+						endforeach;
+						?>
+				</div><!--end display embeds -->
+
+
+			<?php
+			endif; ?>
+
+				<!--display map -->
+			<?php 
+				$this->trigger('view.show.map'); 
+			?> 
+			<!--end map-->
+
+			</div> <!-- end content -->
+		</div><!-- end in-call-out with image -->
+	</div><!-- end container-1 -->
+
+	<div class="container-2">
+		<div class="in-call-out" data-info="in-call-out" data-size="large" data-category="" tabindex="0">   
+			
+			<div class="content">
+					<!--default list of items  -->	
+				<div class="content-area">
+			   
+				<div>
+					<p tabindex="0">
+						<?php echo $item->displayValues(); ?>
+					</p>
+				</div>
+			
+				<div class="property">
+					<?php $this->trigger('view.show.after'); ?> 
+				</div>
+			</div><!--end list of items -->
+
+
+			</div><!-- end content -->
+		
+		</div><!-- end callout -->
+	
+	</div><!-- end container-2 -->
+
+</div><!-- end content layout -->
+
+
+
+
+<div class="property">
+  <?php $itemSets = $item->itemSets(); ?>
+  <?php if (count($itemSets) > 0): ?>
+  <h3 class="pb-3 mb-4 font-italic border-bottom">>
+	<?php echo $translate('Item sets'); ?>
+  </h3>
+  <?php foreach ($itemSets as $itemSet): ?>
+  <h3 class="pb-3 mb-4 font-italic border-bottom">
+	<div class="value">
+	  <a href="<?php echo $escape($itemSet->url()); ?>">
+		<?php echo $itemSet->displayTitle(); ?>
+	  </a>
+	</div>
+  </h3>
+  <?php
+endforeach; ?>
+  <?php
+endif; ?>
+</div>
+<!-- <h1>TEST@@@@@@@@@</h1> -->
+
+
+<?php
+$page = $this->params()->fromQuery('page', 1);
+$property = $this->params()->fromQuery('property');
+$subjectValues = $item->displaySubjectValues($page, 25, $property);
+?>
+<?php if ($subjectValues): ?>
+<?php// echo $translate('Linked resources'); ?> 
+<?php //echo $subjectValues;
+?>
+<?php
+endif; ?>
