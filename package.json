@@ -17,9 +17,9 @@
   "author": "cristyanc",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/"
+    "url": "https://cristyanc.github.io/octoroon-theme/"
   },
-  "homepage": "https://github.com/ ",
+  "homepage": "https://cristyanc.github.io/octoroon-theme/",
   "devDependencies": {
     "autoprefixer": "^9.5.1",
     "gulp": "^4.0.2",
