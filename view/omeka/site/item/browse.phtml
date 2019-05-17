@@ -87,7 +87,7 @@ $sortHeadings = [
 </div>
 <?php $this->trigger('view.browse.before');?>
  <!-- **ccadena <ul class="resource-list"> -->
-<div class="row">
+<div class="flex-boxes">
 
 
  <?php
@@ -96,8 +96,8 @@ foreach ($items as $item):
     $body = $item->value($bodyTerm);
     ?>
 	   <!-- **ccadena <li class="item resource"> -->
-	   <div class="card-group col-md-6 col-lg-4 ">
-	   <div class="card mb-4 shadow-sm in-call-out">
+	   <div class="flex-box in-call-out">
+	   <div class=" mb-4 ">
 	   <div class="card-header " data-size="small">
 	   <h2 class="m-4"> <?php echo $item->link($heading); ?></h2>
 	  </div>
