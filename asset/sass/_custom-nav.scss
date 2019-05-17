@@ -128,7 +128,7 @@ header nav > ul > li > ul > li > ul > li a {
 header nav {
   margin: $spacing-m auto 0;
   position: static;
-  padding: 0 (2 * gutter());
+  //padding: 0 (2 * gutter());
 }
 
 header nav:before {
@@ -253,7 +253,7 @@ header nav ul.navigation {
 
   & > li:hover > ul {
     @include container;
-    padding: $spacing-m (1 * gutter());
+   //padding: $spacing-m (1 * gutter());
     left: 0;
     right: 0;
     border-bottom: 0;

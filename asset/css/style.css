@@ -29,7 +29,6 @@ Samsung Should be Scoped within .touch
   }
   body {
     background-color: #e9e5dc;
-    font-family: "Open Sans", sans-serif;
     font-size: 20px;
     line-height: 30px;
     margin: 0;
@@ -98,11 +97,11 @@ Samsung Should be Scoped within .touch
   }
   .field .field-meta {
     width: 30%;
-    padding: 7.5px 1.69492% 0 0;
+    padding: 7.5px gutter() 0 0;
   }
   .field .inputs {
     width: 70%;
-    padding-left: 1.69492%;
+    padding-left: gutter();
   }
   .field .inputs > select,
   .field .inputs > textarea,
@@ -271,10 +270,9 @@ Samsung Should be Scoped within .touch
     position: relative;
   }
   header > * {
-    max-width: 1700px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 1.69492%;
+    padding: 0 gutter();
     display: block;
   }
   .site-title:hover,
@@ -295,7 +293,7 @@ Samsung Should be Scoped within .touch
     background-color: #fff;
     border-bottom: 1px solid #e9e5dc;
     border-top: 1px solid #e9e5dc;
-    padding: 7.5px 1.69492%;
+    padding: 7.5px gutter();
   }
   #search form {
     display: flex;
@@ -325,18 +323,16 @@ Samsung Should be Scoped within .touch
   /* @end */
   /* @group ----- Footer ----- */
   footer {
-    max-width: 1700px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 1.69492% 30px;
+    padding: 0 gutter() 30px;
   }
   /* @end */
   /* @group ----- Page and Blocks ----- */
   #content {
-    max-width: 1700px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 1.69492% 30px;
+    padding: 0 gutter() 30px;
   }
   .item-showcase {
     margin: 30px 0;
@@ -372,7 +368,7 @@ Samsung Should be Scoped within .touch
   .item-showcase .resource.item:not(:only-child) {
     width: 25%;
     clear: none;
-    padding: 0 1.69492%;
+    padding: 0 gutter();
   }
   .item-showcase .resource.item:not(:only-child) h3 {
     clear: left;
@@ -10223,91 +10219,6 @@ a.text-dark:hover, a.text-dark:focus {
 /*!
 * octoroon7
  */
-@media screen and (min-width: 960px) {
-  #content {
-    padding: 0 3.38983% 30px;
-  }
-  table {
-    margin: 30px 0;
-    border-collapse: collapse;
-  }
-  th,
-  td {
-    text-align: left;
-    padding: 7.5px 15px;
-    padding-bottom: 6.5px;
-    border-bottom: 1px solid #ababab;
-  }
-  /* @group ----- Header ----- */
-  #main {
-    position: relative;
-    padding: 15px 0 0 0;
-    padding-bottom: 30px;
-    border-bottom: 2px solid #6c757d !important;
-  }
-  header > * {
-    padding: 0 3.38983%;
-  }
-  /* @end */
-  /* @group ----- Footer ----- */
-  footer {
-    padding: 0 3.38983% 30px;
-  }
-  /* @end */
-  /* @group ----- Resource List ----- */
-  ul.resource-list .resource img {
-    width: 120px;
-    height: auto;
-    float: right;
-    margin-left: 15px;
-  }
-  ul.resource-list .resource img ~ * {
-    width: calc(100% - 135px);
-  }
-  /* @end */
-  /* @group ----- Item Set ----- */
-  body.item-set.item #content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: flex-end;
-  }
-  body.item-set.item #content > h2,
-  body.item-set.item #content > h3 {
-    width: 100%;
-  }
-  body.item-set .metadata {
-    width: 32.20339%;
-    border-left: 5px solid #e9e5dc;
-    padding-left: 1.69492%;
-    margin-right: 1.69492%;
-  }
-  body.item-set .metadata h4:first-of-type {
-    margin-top: 0;
-  }
-  body.item-set #content .metadata ~ * {
-    width: 66.10169%;
-    border-left: 1px solid #e9e5dc;
-    padding-left: 1.69492%;
-  }
-  body.item-set .item-set-items h3 {
-    margin-top: 0;
-  }
-  body.item-set .metadata ~ nav.pagination:first-of-type {
-    margin-bottom: 0;
-  }
-  /* @end */
-  /* @group ----- Page and blocks ----- */
-  .preview-block {
-    clear: both;
-  }
-  ul.preview.resource-list li:first-of-type {
-    border-top: 1px solid #e9e5dc;
-    padding-top: 29px;
-  }
-  /* @end */
-}
-
 /*!
 * octoroon8
  */
@@ -10434,7 +10345,6 @@ header nav > ul > li > ul > li > ul > li a {
 header nav {
   margin: 15px auto 0;
   position: static;
-  padding: 0 3.38983%;
 }
 
 header nav:before {
@@ -10551,10 +10461,8 @@ header nav ul.navigation > li > ul > li.active > a:hover {
 }
 
 header nav ul.navigation > li:hover > ul {
-  max-width: 1700px;
   margin-left: auto;
   margin-right: auto;
-  padding: 15px 1.69492%;
   left: 0;
   right: 0;
   border-bottom: 0;
@@ -10672,7 +10580,6 @@ header nav > ul > li > ul > li > ul > li a {
 html,
 body {
   background-color: #e9e5dc;
-  font: 18px/24px;
   /* Full height */
   /* Center and scale the image nicely */
   background-position: center;
@@ -12075,21 +11982,7 @@ a.resource-link, .tags > div > a {
   font-weight: 100;
   padding: 0;
   color: #353035;
-  font-size: 2.6em;
-}
-
-@media all and (max-width: 1599px) {
-  .in-call-out h2,
-  .in-call-out #content > div > div > h2 {
-    font-size: 1.6vw;
-  }
-}
-
-@media all and (max-width: 1279px) {
-  .in-call-out h2,
-  .in-call-out #content > div > div > h2 {
-    font-size: 2em;
-  }
+  font-size: 2.3em;
 }
 
 .in-call-out svg path,

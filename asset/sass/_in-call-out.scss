@@ -245,13 +245,13 @@
     font-weight: 100;
     padding: 0;
     color: $primary;
-    font-size: 2.6em;
+    font-size: 2.3em;
 
     @media #{$px1440} {
-      font-size: 1.6vw;
+     // font-size: 1.6vw;
     } //1440
     @media #{$px1160} {
-      font-size: 2em;
+     // font-size: 2.6em;
     } //1160
   } //h2
 
