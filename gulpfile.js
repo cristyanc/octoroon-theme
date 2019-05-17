@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
+//var browserSync = require('browser-sync').create();
 
 gulp.task('css', function () {
     var sass = require('gulp-sass');
@@ -26,5 +26,5 @@ gulp.task('css:watch', function () {
 gulp.task('js', function () {
     return gulp.src(['./node_modules/bootstrap/dist/js/bootstrap.min.js', './node_modules/popper.js/dist/popper.min.js', './node_modules/jquery/dist/jquery.min.js', 'node_modules/susy/sass'])
         .pipe(gulp.dest('./asset/js'))
-        .pipe(browserSync.stream());
+        //.pipe(browserSync.stream());
 });

@@ -57,6 +57,7 @@ $this->escapeHtml($logo) . '">'; endif; ?>
                 'maxDepth' => $this->themeSetting('nav_depth') - 1
             ]);
             ?>
+    
 
             
              
@@ -68,23 +69,9 @@ $this->escapeHtml($logo) . '">'; endif; ?>
 
  
 </header>
-
-            
-          <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-          <img src="/themes/octoroon/asset/img/logo-octoroon-brandingw@0,25x.png" alt=""> 
-          </nav>
-          -->
-       
-                
-            
-           
-   
+ 
 <?php if (strpos($_SERVER['REQUEST_URI'], 'home') !== false): ?>
 <!--homeage if is called welcome  ---->
-
-
- 
-
 
 <div class="site-wrapper in-call-out ">
     <div class="site-wrapper-inner bg">
@@ -138,7 +125,10 @@ else: ?>
 </div>
 <?php
 endif; ?>
+ 
 <script>
+ 
+
 console.clear();
 
 var tween;
