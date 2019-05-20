@@ -81,6 +81,10 @@ $itemMedia = $item->media();
 				</div>
 			
 				<div class="property">
+					<?php $this->trigger('view.show.tags'); ?> 
+				</div>
+
+					<div class="property">
 					<?php $this->trigger('view.show.after'); ?> 
 				</div>
 			</div><!--end list of items -->

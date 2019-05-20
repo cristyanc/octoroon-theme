@@ -64,7 +64,7 @@ $sortHeadings = [
  </a>
   </li>
   <li class="nav-item">
-    <a class="btn btn-info btn  m-1" " href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=8&property%5B0%5D%5Btype%5D=eq&property%5B0%5D%5Btext%5D=Historic+Event&resource_class_id%5B%5D=&item_set_id%5B%5D=&submit=Search">Historic Events</a>
+    <a class="btn btn-info btn  m-1" href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=8&property%5B0%5D%5Btype%5D=eq&property%5B0%5D%5Btext%5D=Historic+Event&resource_class_id%5B%5D=&item_set_id%5B%5D=&submit=Search">Historic Events</a>
   </li>
     <li class="nav-item">
     <a class="btn btn-info btn m-1 " href="/s/octoroon/item?property%5B0%5D%5Bjoiner%5D=and&property%5B0%5D%5Bproperty%5D=8&property%5B0%5D%5Btype%5D=in&property%5B0%5D%5Btext%5D=Article&property%5B1%5D%5Bjoiner%5D=or&property%5B1%5D%5Bproperty%5D=8&property%5B1%5D%5Btype%5D=in&property%5B1%5D%5Btext%5D=Prompt+Book&property%5B2%5D%5Bjoiner%5D=or&property%5B2%5D%5Bproperty%5D=8&property%5B2%5D%5Btype%5D=in&property%5B2%5D%5Btext%5D=Playbill&resource_class_id%5B%5D=&item_set_id%5B%5D=&submit=Search">Media</a>
@@ -91,6 +91,7 @@ $sortHeadings = [
 <?php
 /**
 *    Return an elipsis given a string and a number of words
+* https://stackoverflow.com/questions/11434091/add-if-string-is-too-long-php
 */
 function elipsis ($text, $words = 30) {
     // Check if string has more than X words
@@ -118,8 +119,6 @@ function elipsis ($text, $words = 30) {
     return $text;
 }
 
-$description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ut placeat consequuntur pariatur iure eum ducimus quasi perferendis, laborum obcaecati iusto ullam expedita excepturi debitis nisi deserunt fugiat velit assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, blanditiis nostrum. Nostrum cumque non rerum ducimus voluptas officia tempore modi, nulla nisi illum, voluptates dolor sapiente ut iusto earum. Esse? Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eligendi perspiciatis natus autem. Necessitatibus eligendi doloribus corporis quia, quas laboriosam. Beatae repellat dolor alias. Perferendis, distinctio, laudantium? Dolorum, veniam, amet!';
-
 
 ?>
 
@@ -135,6 +134,7 @@ $description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibus
 	   <div class="card mb-4 shadow-sm in-call-out">
 	    <div class="card-header " data-size="small">
 	      <h2 class="m-4"> <?php echo $item->link($heading); ?></h2>
+        <h3><?php echo $item->link($tag); ?></h3>
 	    </div>
 	   
        <div class="card-body">
@@ -152,9 +152,10 @@ $description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibus
                 ?>
               </span>
           </div>
-            
+
         <br>
         <div class="d-flex justify-content-between align-items-center">
+         
 <div class="btn-group"><button class="btn btn-sm btn-outline-secondary" type="button"> <?php echo $item->link('View Item'); // Print a link to $item ?></button><button class="btn btn-sm btn-outline-secondary" type="button"> <a href="<?php echo $item->adminUrl('edit', 'edit'); // Print a link to the edit form for $item ?>" target="_blank">Edit</a> </button></div>
  </div>
 </div><!--end body -->
