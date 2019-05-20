@@ -88,49 +88,70 @@ $sortHeadings = [
 <?php $this->trigger('view.browse.before');?>
  <!-- **ccadena <ul class="resource-list"> -->
 <div class="row">
+<?php
+/**
+*    Return an elipsis given a string and a number of words
+*/
+function elipsis ($text, $words = 30) {
+    // Check if string has more than X words
+    if (str_word_count($text) > $words) {
+
+        // Extract first X words from string
+        preg_match("/(?:[^\s,\.;\?\!]+(?:[\s,\.;\?\!]+|$)){0,$words}/", $text, $matches);
+        $text = trim($matches[0]);
+
+        // Let's check if it ends in a comma or a dot.
+        if (substr($text, -1) == ',') {
+            // If it's a comma, let's remove it and add a ellipsis
+            $text = rtrim($text, ',');
+            $text .= '...';
+        } else if (substr($text, -1) == '.') {
+            // If it's a dot, let's remove it and add a ellipsis (optional)
+            $text = rtrim($text, '.');
+            $text .= '...';
+        } else {
+            // Doesn't end in dot or comma, just adding ellipsis here
+            $text .= '...';
+        }
+    }
+    // Returns "ellipsed" text, or just the string, if it's less than X words wide.
+    return $text;
+}
+
+$description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ut placeat consequuntur pariatur iure eum ducimus quasi perferendis, laborum obcaecati iusto ullam expedita excepturi debitis nisi deserunt fugiat velit assumenda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, blanditiis nostrum. Nostrum cumque non rerum ducimus voluptas officia tempore modi, nulla nisi illum, voluptates dolor sapiente ut iusto earum. Esse? Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eligendi perspiciatis natus autem. Necessitatibus eligendi doloribus corporis quia, quas laboriosam. Beatae repellat dolor alias. Perferendis, distinctio, laudantium? Dolorum, veniam, amet!';
 
 
- <?php
-foreach ($items as $item):
-    $heading = $item->value($headingTerm, ['default' => $translate('[Untitled]')]);
-    $body = $item->value($bodyTerm);
-    ?>
-	   <!-- **ccadena <li class="item resource"> -->
-	   <div class="card-group col-md-6 col-lg-4 ">
-	   <div class="card mb-4 shadow-sm in-call-out">
-	   <div class="card-header " data-size="small">
-	   <h2 class="m-4"> <?php echo $item->link($heading); ?></h2>
-	  </div>
-	   <div class="card-body">
-	            <div class=" float-left mr-3">
-	                <?php echo $item->linkRaw($this->thumbnail($item, 'medium')); ?>
-	            </div>
-
-              <?php
-if (strlen($body) > $length) {
-  
-  //limit hit!
-  $body = substr($body,0,($length +150));
-
-  if ($stopanywhere) {
-  
-      //stop anywhere
-      $body .= '...';
-  } else{
-    
-      //stop on a word.
-      $body = substr($body,0,strrpos($body,' ')).'...';
-  }  echo $length;
-}?>
-
-<div class="description"><span>
-<?php echo $body;
-echo $item->link('Learn More');
 ?>
-</span>
-</div>
 
-
+ 
+ 
+ <?php
+    foreach ($items as $item):
+      $heading = $item->value($headingTerm, ['default' => $translate('[Untitled]')]);
+      $body = $item->value($bodyTerm);
+?>
+	   <!-- **ccadena <li class="item resource"> -->
+	  <div class="card-group col-md-6 col-lg-4 ">
+	   <div class="card mb-4 shadow-sm in-call-out">
+	    <div class="card-header " data-size="small">
+	      <h2 class="m-4"> <?php echo $item->link($heading); ?></h2>
+	    </div>
+	   
+       <div class="card-body">
+	        <div class=" float-left mr-3">
+	                <?php echo $item->linkRaw($this->thumbnail($item, 'medium')); ?>
+	        </div>
+        
+          <div class="description">
+              <?php 
+              echo elipsis($body, 20);
+              ?>
+              <span>
+                <?php  
+                  echo $item->link('Learn More');
+                ?>
+              </span>
+          </div>
             
         <br>
         <div class="d-flex justify-content-between align-items-center">
