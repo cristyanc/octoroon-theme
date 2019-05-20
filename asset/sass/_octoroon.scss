@@ -45,6 +45,12 @@ text-decoration: underline!important;
 color:$warning;
 
 }
+
+ button > label {
+
+font-family: sans-serif!important;
+
+ }
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 #all-content.site-wrapper {
   display: table;
