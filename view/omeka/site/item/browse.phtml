@@ -80,6 +80,8 @@ $sortHeadings = [
     
 
  </div>
+
+
  <?php   echo $this->searchFilters(); ?>
 <div class="browse-controls">
     <?php echo $this->pagination(); ?>
@@ -153,6 +155,8 @@ function elipsis ($text, $words = 30) {
           </div>
             
         <br>
+
+
         <div class="d-flex justify-content-between align-items-center">
 <div class="btn-group"><button class="btn btn-sm btn-outline-secondary" type="button"> <?php echo $item->link('View Item'); // Print a link to $item ?></button><button class="btn btn-sm btn-outline-secondary" type="button"> <a href="<?php echo $item->adminUrl('edit', 'edit'); // Print a link to the edit form for $item ?>" target="_blank">Edit</a> </button></div>
  </div>
