@@ -11,6 +11,7 @@ gulp.task('css', function () {
     return gulp.src('./asset/sass/*.scss')
         .pipe(sass({
             outputStyle: 'expanded',
+            // includePaths: ['node_modules/susy/sass']
             includePaths: ['node_modules/bootstrap/scss', 'node_modules/susy/sass']
         }).on('error', sass.logError))
         .pipe(postcss([
@@ -26,5 +27,5 @@ gulp.task('css:watch', function () {
 gulp.task('js', function () {
     return gulp.src(['./node_modules/bootstrap/dist/js/bootstrap.min.js', './node_modules/popper.js/dist/popper.min.js', './node_modules/jquery/dist/jquery.min.js', 'node_modules/susy/sass'])
         .pipe(gulp.dest('./asset/js'))
-        //.pipe(browserSync.stream());
+        .pipe(browserSync.stream());
 });
